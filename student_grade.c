@@ -19,14 +19,18 @@ int main() {
     int subjectCount;
     int studentCount;
 
-    printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
-    scanf("%d", &subjectCount);
-    if (subjectCount > MAX_SUBJECTS) {
-        subjectCount = MAX_SUBJECTS;
-    }
-    if (subjectCount <= 0) {
-        printf("잘못된 과목 수입니다.\n");
-        return 1;
+    while (1) {
+        printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
+        if (scanf("%d", &subjectCount) == 1) {
+            if (subjectCount > 0 && subjectCount <= MAX_SUBJECTS) {
+                clearInputBuffer();
+                break;
+            }
+            printf("[오류] 과목 수는 1에서 %d 사이여야 합니다.\n", MAX_SUBJECTS);
+        } else {
+            printf("[오류] 올바른 숫자를 입력해 주세요.\n");
+        }
+        clearInputBuffer();
     }
 
     for (int i = 0; i < subjectCount; i++) {
