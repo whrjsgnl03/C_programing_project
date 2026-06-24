@@ -30,7 +30,9 @@ int main() {
 
     for (int i = 0; i < subjectCount; i++) {
         printf("%d번째 과목명 입력: ", i + 1);
-        scanf("%s", subjects[i]);
+        scanf("%19s", subjects[i]);
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
     }
     printf("\n");
     
