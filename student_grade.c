@@ -3,12 +3,14 @@
 #define MAX_STUDENTS 100
 #define MAX_SUBJECTS 10
 
+// 구조체 멤버 정렬을 통해 메모리 패딩(padding) 최소화 및 크기 최적화 (88바이트 -> 80바이트)
 typedef struct {
-    char name[20];
-    int scores[MAX_SUBJECTS];
-    char grades[MAX_SUBJECTS];
-    double average;
-    char averageGrade;
+    double average;            // 8바이트 (가장 큰 데이터 타입을 앞으로 배치)
+    int scores[MAX_SUBJECTS];  // 40바이트 (4바이트 정수 10개)
+    char name[20];             // 20바이트
+    char grades[MAX_SUBJECTS]; // 10바이트
+    char averageGrade;         // 1바이트
+    // 자동 패딩 1바이트 삽입됨
 } Student;
 
 char calculateGrade(double score);
@@ -66,7 +68,7 @@ int main() {
    
     // 2. 결과 출력 부분에 포인터 적용
     for (int i = 0; i < studentCount; i++) {
-        Student *s = &list[i]; // 출력할 학생의 주소를 포인터에 저장
+        const Student *s = &list[i]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
         
         printf("%-10s", s->name);
         for (int j = 0; j < subjectCount; j++) {
