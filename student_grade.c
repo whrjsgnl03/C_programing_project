@@ -13,25 +13,15 @@ typedef struct {
 
 char calculateGrade(double score);
 void clearInputBuffer(void);
+int getSafeInt(int min, int max);
 
 int main() {
     char subjects[MAX_SUBJECTS][20];
     int subjectCount;
     int studentCount;
 
-    while (1) {
-        printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
-        if (scanf("%d", &subjectCount) == 1) {
-            if (subjectCount > 0 && subjectCount <= MAX_SUBJECTS) {
-                clearInputBuffer();
-                break;
-            }
-            printf("[오류] 과목 수는 1에서 %d 사이여야 합니다.\n", MAX_SUBJECTS);
-        } else {
-            printf("[오류] 올바른 숫자를 입력해 주세요.\n");
-        }
-        clearInputBuffer();
-    }
+    printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
+    subjectCount = getSafeInt(1, MAX_SUBJECTS);
 
     for (int i = 0; i < subjectCount; i++) {
         printf("%d번째 과목명 입력: ", i + 1);
@@ -40,19 +30,8 @@ int main() {
     }
     printf("\n");
     
-    while (1) {
-        printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
-        if (scanf("%d", &studentCount) == 1) {
-            if (studentCount > 0 && studentCount <= MAX_STUDENTS) {
-                clearInputBuffer();
-                break;
-            }
-            printf("[오류] 학생 수는 1에서 %d 사이여야 합니다.\n", MAX_STUDENTS);
-        } else {
-            printf("[오류] 올바른 숫자를 입력해 주세요.\n");
-        }
-        clearInputBuffer();
-    }
+    printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
+    studentCount = getSafeInt(1, MAX_STUDENTS);
     printf("\n");
 
     Student list[MAX_STUDENTS];
@@ -68,19 +47,8 @@ int main() {
         
         int sum = 0;
         for (int j = 0; j < subjectCount; j++) {
-            while (1) {
-                printf("%s 점수 입력: ", subjects[j]);
-                if (scanf("%d", &s->scores[j]) == 1) {
-                    if (s->scores[j] >= 0 && s->scores[j] <= 100) {
-                        clearInputBuffer();
-                        break;
-                    }
-                    printf("[오류] 점수는 0점 이상 100점 이하여야 합니다.\n");
-                } else {
-                    printf("[오류] 올바른 숫자를 입력해 주세요.\n");
-                }
-                clearInputBuffer();
-            }
+            printf("%s 점수 입력: ", subjects[j]);
+            s->scores[j] = getSafeInt(0, 100);
             s->grades[j] = calculateGrade((double)s->scores[j]);
             sum += s->scores[j];
         }
@@ -121,4 +89,20 @@ char calculateGrade(double score) {
 void clearInputBuffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
+}
+
+int getSafeInt(int min, int max) {
+    int value;
+    while (1) {
+        if (scanf("%d", &value) == 1) {
+            if (value >= min && value <= max) {
+                clearInputBuffer();
+                return value;
+            }
+            printf("[오류] 입력값은 %d에서 %d 사이의 정수여야 합니다. 다시 입력해 주세요: ", min, max);
+        } else {
+            printf("[오류] 올바른 숫자를 입력해 주세요: ");
+            clearInputBuffer();
+        }
+    }
 }
