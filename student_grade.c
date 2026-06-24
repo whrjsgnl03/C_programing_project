@@ -40,14 +40,18 @@ int main() {
     }
     printf("\n");
     
-    printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
-    scanf("%d", &studentCount);
-    if (studentCount > MAX_STUDENTS) {
-        studentCount = MAX_STUDENTS;
-    }
-    if (studentCount <= 0) {
-        printf("잘못된 학생 수입니다.\n");
-        return 1;
+    while (1) {
+        printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
+        if (scanf("%d", &studentCount) == 1) {
+            if (studentCount > 0 && studentCount <= MAX_STUDENTS) {
+                clearInputBuffer();
+                break;
+            }
+            printf("[오류] 학생 수는 1에서 %d 사이여야 합니다.\n", MAX_STUDENTS);
+        } else {
+            printf("[오류] 올바른 숫자를 입력해 주세요.\n");
+        }
+        clearInputBuffer();
     }
     printf("\n");
 
