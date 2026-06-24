@@ -70,11 +70,16 @@ int main() {
         for (int j = 0; j < subjectCount; j++) {
             while (1) {
                 printf("%s 점수 입력: ", subjects[j]);
-                scanf("%d", &s->scores[j]);
-                if (s->scores[j] >= 0 && s->scores[j] <= 100) {
-                    break;
+                if (scanf("%d", &s->scores[j]) == 1) {
+                    if (s->scores[j] >= 0 && s->scores[j] <= 100) {
+                        clearInputBuffer();
+                        break;
+                    }
+                    printf("[오류] 점수는 0점 이상 100점 이하여야 합니다.\n");
+                } else {
+                    printf("[오류] 올바른 숫자를 입력해 주세요.\n");
                 }
-                printf("[오류] 점수는 0점 이상 100점 이하여야 합니다. 다시 입력해 주세요.\n");
+                clearInputBuffer();
             }
             s->grades[j] = calculateGrade((double)s->scores[j]);
             sum += s->scores[j];
