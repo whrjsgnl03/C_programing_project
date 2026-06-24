@@ -12,6 +12,7 @@ typedef struct {
 } Student;
 
 char calculateGrade(double score);
+void clearInputBuffer(void);
 
 int main() {
     char subjects[MAX_SUBJECTS][20];
@@ -104,4 +105,9 @@ char calculateGrade(double score) {
     if (score >= 70.0) return 'C';
     if (score >= 60.0) return 'D';
     return 'E';
+}
+
+void clearInputBuffer(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
