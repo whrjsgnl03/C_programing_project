@@ -55,7 +55,9 @@ int main() {
         
         printf("[%d번째 학생]\n", i + 1);
         printf("이름: ");
-        scanf("%s", s->name); // '.' 대신 '->' 사용
+        scanf("%19s", s->name); // '.' 대신 '->' 사용
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
         
         int sum = 0;
         for (int j = 0; j < subjectCount; j++) {
