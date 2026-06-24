@@ -32,8 +32,7 @@ int main() {
     for (int i = 0; i < subjectCount; i++) {
         printf("%d번째 과목명 입력: ", i + 1);
         scanf("%19s", subjects[i]);
-        int c;
-        while ((c = getchar()) != '\n' && c != EOF);
+        clearInputBuffer();
     }
     printf("\n");
     
@@ -57,8 +56,7 @@ int main() {
         printf("[%d번째 학생]\n", i + 1);
         printf("이름: ");
         scanf("%19s", s->name); // '.' 대신 '->' 사용
-        int c;
-        while ((c = getchar()) != '\n' && c != EOF);
+        clearInputBuffer();
         
         int sum = 0;
         for (int j = 0; j < subjectCount; j++) {
