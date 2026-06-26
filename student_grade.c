@@ -13,7 +13,7 @@ typedef struct {
     // 자동 패딩 1바이트 삽입됨
 } Student;
 
-char calculateGrade(double score);
+char calculateGrade(const double score);
 void clearInputBuffer(void);
 int getSafeInt(int min, int max);
 
@@ -80,7 +80,7 @@ int main() {
     return 0;
 }
 
-char calculateGrade(double score) {
+char calculateGrade(const double score) {
     if (score >= 90.0) return 'A';
     if (score >= 80.0) return 'B';
     if (score >= 70.0) return 'C';
