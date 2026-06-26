@@ -3,6 +3,7 @@
 #define MAX_STUDENTS 100
 #define MAX_SUBJECTS 10
 #define MAX_NAME_LEN 20
+#define SCANF_NAME_FMT "%19s"
 
 /**
  * @brief Represents a student's grades and average scores.
@@ -49,7 +50,7 @@ int main(void) {
 
     for (int i = 0; i < subjectCount; i++) {
         printf("%d번째 과목명 입력: ", i + 1);
-        scanf("%19s", subjects[i]);
+        scanf(SCANF_NAME_FMT, subjects[i]);
         clearInputBuffer();
     }
     printf("\n");
@@ -66,7 +67,7 @@ int main(void) {
         
         printf("[%d번째 학생]\n", i + 1);
         printf("이름: ");
-        scanf("%19s", s->name); // '.' 대신 '->' 사용
+        scanf(SCANF_NAME_FMT, s->name); // '.' 대신 '->' 사용
         clearInputBuffer();
         
         int sum = 0;
