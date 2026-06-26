@@ -18,7 +18,7 @@ char calculateGrade(const double score);
 void clearInputBuffer(void);
 int getSafeInt(const int min, const int max);
 
-int main() {
+int main(void) {
     char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
     int subjectCount;
     int studentCount;
