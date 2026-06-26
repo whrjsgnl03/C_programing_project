@@ -113,7 +113,9 @@ char calculateGrade(const double score) {
 
 void clearInputBuffer(void) {
     int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    while ((c = getchar()) != '\n' && c != EOF) {
+        // Discard characters
+    }
 }
 
 int getSafeInt(const int min, const int max) {
