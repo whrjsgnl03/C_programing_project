@@ -2,12 +2,13 @@
 
 #define MAX_STUDENTS 100
 #define MAX_SUBJECTS 10
+#define MAX_NAME_LEN 20
 
 // 구조체 멤버 정렬을 통해 메모리 패딩(padding) 최소화 및 크기 최적화 (88바이트 -> 80바이트)
 typedef struct {
     double average;            // 8바이트 (가장 큰 데이터 타입을 앞으로 배치)
     int scores[MAX_SUBJECTS];  // 40바이트 (4바이트 정수 10개)
-    char name[20];             // 20바이트
+    char name[MAX_NAME_LEN];             // 20바이트
     char grades[MAX_SUBJECTS]; // 10바이트
     char averageGrade;         // 1바이트
     // 자동 패딩 1바이트 삽입됨
@@ -18,7 +19,7 @@ void clearInputBuffer(void);
 int getSafeInt(const int min, const int max);
 
 int main() {
-    char subjects[MAX_SUBJECTS][20];
+    char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
     int subjectCount;
     int studentCount;
 
