@@ -96,7 +96,7 @@ void clearInputBuffer(void) {
 
 int getSafeInt(const int min, const int max) {
     int value;
-    while (1) {
+    for (;;) {
         if (scanf("%d", &value) == 1) {
             if (value >= min && value <= max) {
                 clearInputBuffer();
