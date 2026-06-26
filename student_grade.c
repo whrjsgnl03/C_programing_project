@@ -4,14 +4,17 @@
 #define MAX_SUBJECTS 10
 #define MAX_NAME_LEN 20
 
-// 구조체 멤버 정렬을 통해 메모리 패딩(padding) 최소화 및 크기 최적화 (88바이트 -> 80바이트)
+/**
+ * @brief Represents a student's grades and average scores.
+ * Structure alignment is optimized to minimize padding (88 bytes -> 80 bytes).
+ */
 typedef struct {
-    double average;            // 8바이트 (가장 큰 데이터 타입을 앞으로 배치)
-    int scores[MAX_SUBJECTS];  // 40바이트 (4바이트 정수 10개)
-    char name[MAX_NAME_LEN];             // 20바이트
-    char grades[MAX_SUBJECTS]; // 10바이트
-    char averageGrade;         // 1바이트
-    // 자동 패딩 1바이트 삽입됨
+    double average;            ///< Student's average score (8 bytes)
+    int scores[MAX_SUBJECTS];  ///< Array of scores for each subject (40 bytes)
+    char name[MAX_NAME_LEN];   ///< Student's name (20 bytes)
+    char grades[MAX_SUBJECTS]; ///< Array of letter grades for each subject (10 bytes)
+    char averageGrade;         ///< Letter grade for the average score (1 byte)
+    // 1-byte padding is automatically inserted by the compiler for alignment
 } Student;
 
 char calculateGrade(const double score);
