@@ -17,8 +17,26 @@ typedef struct {
     // 1-byte padding is automatically inserted by the compiler for alignment
 } Student;
 
+/**
+ * @brief Calculates the letter grade based on a numeric score.
+ * 
+ * @param score The numeric grade value.
+ * @return char The calculated letter grade ('A', 'B', 'C', 'D', or 'E').
+ */
 char calculateGrade(const double score);
+
+/**
+ * @brief Clears the standard input buffer to discard trailing characters.
+ */
 void clearInputBuffer(void);
+
+/**
+ * @brief Safely reads an integer from standard input within a specified range.
+ * 
+ * @param min The minimum acceptable value.
+ * @param max The maximum acceptable value.
+ * @return int The validated integer read from the user.
+ */
 int getSafeInt(const int min, const int max);
 
 int main(void) {
