@@ -15,7 +15,7 @@ typedef struct {
 
 char calculateGrade(const double score);
 void clearInputBuffer(void);
-int getSafeInt(int min, int max);
+int getSafeInt(const int min, const int max);
 
 int main() {
     char subjects[MAX_SUBJECTS][20];
@@ -93,7 +93,7 @@ void clearInputBuffer(void) {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-int getSafeInt(int min, int max) {
+int getSafeInt(const int min, const int max) {
     int value;
     while (1) {
         if (scanf("%d", &value) == 1) {
