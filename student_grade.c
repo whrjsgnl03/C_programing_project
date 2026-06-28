@@ -80,7 +80,7 @@ int main(void) {
             s->grades[j] = calculateGrade((double)s->scores[j]);
             sum += s->scores[j];
         }
-        s->average = (double)sum / subjectCount;
+        s->average = (double)sum / (double)subjectCount;
         s->averageGrade = calculateGrade(s->average);
         printf("\n");
     }
