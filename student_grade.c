@@ -64,7 +64,7 @@ int main(void) {
 
     // 1. 학생 정보 입력 및 계산 부분에 포인터 적용
     for (int i = 0; i < studentCount; i++) {
-        Student *s = &list[i]; // 현재 학생의 주소를 포인터에 저장
+        Student * const s = &list[i]; // 현재 학생의 주소를 포인터에 저장
         
         printf("[%d번째 학생]\n", i + 1);
         printf("이름: ");
