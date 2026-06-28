@@ -76,7 +76,7 @@ int main(void) {
         int sum = 0;
         for (int j = 0; j < subjectCount; j++) {
             printf("%s 점수 입력: ", subjects[j]);
-            s->scores[j] = getSafeInt(0, 100);
+            s->scores[j] = getSafeInt(MIN_SCORE, MAX_SCORE);
             s->grades[j] = calculateGrade((double)s->scores[j]);
             sum += s->scores[j];
         }
