@@ -45,11 +45,9 @@ int getSafeInt(const int min, const int max);
 
 int main(void) {
     char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
-    int subjectCount;
-    int studentCount;
 
     printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
-    subjectCount = getSafeInt(1, MAX_SUBJECTS);
+    const int subjectCount = getSafeInt(1, MAX_SUBJECTS);
 
     for (int i = 0; i < subjectCount; i++) {
         printf("%d번째 과목명 입력: ", i + 1);
@@ -59,7 +57,7 @@ int main(void) {
     printf("\n");
     
     printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
-    studentCount = getSafeInt(1, MAX_STUDENTS);
+    const int studentCount = getSafeInt(1, MAX_STUDENTS);
     printf("\n");
 
     Student list[MAX_STUDENTS];
