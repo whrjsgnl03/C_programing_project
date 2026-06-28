@@ -65,20 +65,20 @@ int main(void) {
     Student list[MAX_STUDENTS];
 
     // 1. 학생 정보 입력 및 계산 부분에 포인터 적용
-    for (int i = 0; i < studentCount; i++) {
-        Student * const s = &list[i]; // 현재 학생의 주소를 포인터에 저장
+    for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
+        Student * const s = &list[studentIdx]; // 현재 학생의 주소를 포인터에 저장
         
-        printf("[%d번째 학생]\n", i + 1);
+        printf("[%d번째 학생]\n", studentIdx + 1);
         printf("이름: ");
         scanf(SCANF_NAME_FMT, s->name); // '.' 대신 '->' 사용
         clearInputBuffer();
         
         int sum = 0;
-        for (int j = 0; j < subjectCount; j++) {
-            printf("%s 점수 입력: ", subjects[j]);
-            s->scores[j] = getSafeInt(MIN_SCORE, MAX_SCORE);
-            s->grades[j] = calculateGrade((double)s->scores[j]);
-            sum += s->scores[j];
+        for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+            printf("%s 점수 입력: ", subjects[subjectIdx]);
+            s->scores[subjectIdx] = getSafeInt(MIN_SCORE, MAX_SCORE);
+            s->grades[subjectIdx] = calculateGrade((double)s->scores[subjectIdx]);
+            sum += s->scores[subjectIdx];
         }
         s->average = (double)sum / (double)subjectCount;
         s->averageGrade = calculateGrade(s->average);
