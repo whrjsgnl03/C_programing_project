@@ -93,12 +93,12 @@ int main(void) {
     printf(" | %-10s\n", "평균");
    
     // 2. 결과 출력 부분에 포인터 적용
-    for (int i = 0; i < studentCount; i++) {
-        const Student *s = &list[i]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
+    for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
+        const Student *s = &list[studentIdx]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
         
         printf("%-10s", s->name);
-        for (int j = 0; j < subjectCount; j++) {
-            printf(" | %3d점 (%c)", s->scores[j], s->grades[j]);
+        for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+            printf(" | %3d점 (%c)", s->scores[subjectIdx], s->grades[subjectIdx]);
         }
         printf(" | %5.1f점 (%c)\n", s->average, s->averageGrade);
     }
