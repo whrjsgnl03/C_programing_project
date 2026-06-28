@@ -5,6 +5,8 @@
 #define MAX_SUBJECTS 10
 #define MAX_NAME_LEN 20
 #define SCANF_NAME_FMT "%19s"
+#define MIN_SCORE 0
+#define MAX_SCORE 100
 
 /**
  * @brief Represents a student's grades and average scores.
