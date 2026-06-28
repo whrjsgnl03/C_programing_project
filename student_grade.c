@@ -137,9 +137,9 @@ int getSafeInt(const int min, const int max) {
                 clearInputBuffer();
                 return value;
             }
-            printf("[오류] 입력값은 %d에서 %d 사이의 정수여야 합니다. 다시 입력해 주세요: ", min, max);
+            printf(ERR_MSG_OUT_OF_BOUNDS, min, max);
         } else {
-            printf("[오류] 올바른 숫자를 입력해 주세요: ");
+            printf(ERR_MSG_INVALID_INPUT);
             clearInputBuffer();
         }
     }
