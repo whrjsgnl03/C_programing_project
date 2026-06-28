@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAX_STUDENTS 100
 #define MAX_SUBJECTS 10
@@ -100,7 +101,7 @@ int main(void) {
         printf(" | %5.1f점 (%c)\n", s->average, s->averageGrade);
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 char calculateGrade(const double score) {
