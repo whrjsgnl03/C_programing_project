@@ -100,7 +100,7 @@ int main(void) {
    
     // 2. 결과 출력 부분에 포인터 적용
     for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
-        const Student *s = &list[studentIdx]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
+        const Student * const s = &list[studentIdx]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
         
         printf(FMT_ROW_NAME, s->name);
         for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
