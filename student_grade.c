@@ -98,7 +98,7 @@ int main(void) {
     }
     printf(FMT_HEADER_AVG, "평균");
    
-    // 2. 결과 출력 부분에 포인터 적용
+    // --- 2. 결과 출력 처리 (포인터 적용) ---
     for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
         const Student * const s = &list[studentIdx]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
         
