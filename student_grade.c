@@ -12,6 +12,9 @@
 #define FMT_HEADER_NAME "%-10s"
 #define FMT_HEADER_SUBJECT " | %-10s"
 #define FMT_HEADER_AVG " | %-10s\n"
+#define FMT_ROW_NAME "%-10s"
+#define FMT_ROW_SCORE " | %3d점 (%c)"
+#define FMT_ROW_AVG " | %5.1f점 (%c)\n"
 
 /**
  * @brief Represents a student's grades and average scores.
