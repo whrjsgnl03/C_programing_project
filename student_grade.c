@@ -87,8 +87,8 @@ int main(void) {
 
     printf("--- 결과 ---\n");
     printf("%-10s", "이름");
-    for (int j = 0; j < subjectCount; j++) {
-        printf(" | %-10s", subjects[j]);
+    for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+        printf(" | %-10s", subjects[subjectIdx]);
     }
     printf(" | %-10s\n", "평균");
    
