@@ -9,6 +9,9 @@
 #define MAX_SCORE 100
 #define ERR_MSG_OUT_OF_BOUNDS "[오류] 입력값은 %d에서 %d 사이의 정수여야 합니다. 다시 입력해 주세요: "
 #define ERR_MSG_INVALID_INPUT "[오류] 올바른 숫자를 입력해 주세요: "
+#define FMT_HEADER_NAME "%-10s"
+#define FMT_HEADER_SUBJECT " | %-10s"
+#define FMT_HEADER_AVG " | %-10s\n"
 
 /**
  * @brief Represents a student's grades and average scores.
