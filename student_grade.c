@@ -89,11 +89,11 @@ int main(void) {
     }
 
     printf("--- 결과 ---\n");
-    printf("%-10s", "이름");
+    printf(FMT_HEADER_NAME, "이름");
     for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
-        printf(" | %-10s", subjects[subjectIdx]);
+        printf(FMT_HEADER_SUBJECT, subjects[subjectIdx]);
     }
-    printf(" | %-10s\n", "평균");
+    printf(FMT_HEADER_AVG, "평균");
    
     // 2. 결과 출력 부분에 포인터 적용
     for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
