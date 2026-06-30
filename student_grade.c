@@ -102,11 +102,11 @@ int main(void) {
     for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
         const Student *s = &list[studentIdx]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
         
-        printf("%-10s", s->name);
+        printf(FMT_ROW_NAME, s->name);
         for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
-            printf(" | %3d점 (%c)", s->scores[subjectIdx], s->grades[subjectIdx]);
+            printf(FMT_ROW_SCORE, s->scores[subjectIdx], s->grades[subjectIdx]);
         }
-        printf(" | %5.1f점 (%c)\n", s->average, s->averageGrade);
+        printf(FMT_ROW_AVG, s->average, s->averageGrade);
     }
 
     return EXIT_SUCCESS;
