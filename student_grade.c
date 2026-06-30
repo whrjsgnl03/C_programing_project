@@ -70,7 +70,7 @@ int main(void) {
 
     Student list[MAX_STUDENTS] = {0};
 
-    // 1. 학생 정보 입력 및 계산 부분에 포인터 적용
+    // --- 1. 학생 정보 입력 및 계산 처리 (포인터 적용) ---
     for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
         Student * const s = &list[studentIdx]; // 현재 학생의 주소를 포인터에 저장
         
