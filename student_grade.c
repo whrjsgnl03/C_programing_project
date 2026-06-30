@@ -68,7 +68,7 @@ int main(void) {
     const int studentCount = getSafeInt(1, MAX_STUDENTS);
     printf("\n");
 
-    Student list[MAX_STUDENTS];
+    Student list[MAX_STUDENTS] = {0};
 
     // 1. 학생 정보 입력 및 계산 부분에 포인터 적용
     for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
