@@ -51,9 +51,9 @@ int main(void) {
     printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
     const int subjectCount = getSafeInt(1, MAX_SUBJECTS);
 
-    for (int i = 0; i < subjectCount; i++) {
-        printf("%d번째 과목명 입력: ", i + 1);
-        scanf(SCANF_NAME_FMT, subjects[i]);
+    for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+        printf("%d번째 과목명 입력: ", subjectIdx + 1);
+        scanf(SCANF_NAME_FMT, subjects[subjectIdx]);
         clearInputBuffer();
     }
     printf("\n");
