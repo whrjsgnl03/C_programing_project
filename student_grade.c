@@ -69,6 +69,16 @@ int inputSubjects(char subjects[MAX_SUBJECTS][MAX_NAME_LEN]);
  */
 void inputStudents(Student list[MAX_STUDENTS], const int studentCount, const char subjects[MAX_SUBJECTS][MAX_NAME_LEN], const int subjectCount);
 
+/**
+ * @brief Prints the results table containing names, subject grades, and averages.
+ * 
+ * @param list Array of Student structures.
+ * @param studentCount The total number of students.
+ * @param subjects Array of subject names.
+ * @param subjectCount The total number of subjects.
+ */
+void printResults(const Student list[MAX_STUDENTS], const int studentCount, const char subjects[MAX_SUBJECTS][MAX_NAME_LEN], const int subjectCount);
+
 int main(void) {
     char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
     const int subjectCount = inputSubjects(subjects);
@@ -82,23 +92,8 @@ int main(void) {
     // --- 1. 학생 정보 입력 및 계산 처리 (포인터 적용) ---
     inputStudents(list, studentCount, (const char (*)[MAX_NAME_LEN])subjects, subjectCount);
 
-    printf("--- 결과 ---\n");
-    printf(FMT_HEADER_NAME, "이름");
-    for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
-        printf(FMT_HEADER_SUBJECT, subjects[subjectIdx]);
-    }
-    printf(FMT_HEADER_AVG, "평균");
-   
     // --- 2. 결과 출력 처리 (포인터 적용) ---
-    for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
-        const Student * const s = &list[studentIdx]; // 출력할 학생의 주소를 const 포인터에 저장 (Read-only 명시)
-        
-        printf(FMT_ROW_NAME, s->name);
-        for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
-            printf(FMT_ROW_SCORE, s->scores[subjectIdx], s->grades[subjectIdx]);
-        }
-        printf(FMT_ROW_AVG, s->average, s->averageGrade);
-    }
+    printResults(list, studentCount, (const char (*)[MAX_NAME_LEN])subjects, subjectCount);
 
     return EXIT_SUCCESS;
 }
@@ -174,5 +169,24 @@ void inputStudents(Student list[MAX_STUDENTS], const int studentCount, const cha
         s->average = (double)sum / (double)subjectCount;
         s->averageGrade = calculateGrade(s->average);
         printf("\n");
+    }
+}
+
+void printResults(const Student list[MAX_STUDENTS], const int studentCount, const char subjects[MAX_SUBJECTS][MAX_NAME_LEN], const int subjectCount) {
+    printf("--- 결과 ---\n");
+    printf(FMT_HEADER_NAME, "이름");
+    for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+        printf(FMT_HEADER_SUBJECT, subjects[subjectIdx]);
+    }
+    printf(FMT_HEADER_AVG, "평균");
+   
+    for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
+        const Student * const s = &list[studentIdx];
+        
+        printf(FMT_ROW_NAME, s->name);
+        for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+            printf(FMT_ROW_SCORE, s->scores[subjectIdx], s->grades[subjectIdx]);
+        }
+        printf(FMT_ROW_AVG, s->average, s->averageGrade);
     }
 }
