@@ -59,6 +59,16 @@ int getSafeInt(const int min, const int max);
  */
 int inputSubjects(char subjects[MAX_SUBJECTS][MAX_NAME_LEN]);
 
+/**
+ * @brief Reads grade data for all students.
+ * 
+ * @param list Array of Student structures.
+ * @param studentCount The total number of students.
+ * @param subjects Array of subject names.
+ * @param subjectCount The total number of subjects.
+ */
+void inputStudents(Student list[MAX_STUDENTS], const int studentCount, const char subjects[MAX_SUBJECTS][MAX_NAME_LEN], const int subjectCount);
+
 int main(void) {
     char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
     const int subjectCount = inputSubjects(subjects);
@@ -70,25 +80,7 @@ int main(void) {
     Student list[MAX_STUDENTS] = {0};
 
     // --- 1. 학생 정보 입력 및 계산 처리 (포인터 적용) ---
-    for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
-        Student * const s = &list[studentIdx]; // 현재 학생의 주소를 포인터에 저장
-        
-        printf("[%d번째 학생]\n", studentIdx + 1);
-        printf("이름: ");
-        scanf(SCANF_NAME_FMT, s->name); // '.' 대신 '->' 사용
-        clearInputBuffer();
-        
-        int sum = 0;
-        for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
-            printf("%s 점수 입력: ", subjects[subjectIdx]);
-            s->scores[subjectIdx] = getSafeInt(MIN_SCORE, MAX_SCORE);
-            s->grades[subjectIdx] = calculateGrade((double)s->scores[subjectIdx]);
-            sum += s->scores[subjectIdx];
-        }
-        s->average = (double)sum / (double)subjectCount;
-        s->averageGrade = calculateGrade(s->average);
-        printf("\n");
-    }
+    inputStudents(list, studentCount, (const char (*)[MAX_NAME_LEN])subjects, subjectCount);
 
     printf("--- 결과 ---\n");
     printf(FMT_HEADER_NAME, "이름");
@@ -161,4 +153,26 @@ int inputSubjects(char subjects[MAX_SUBJECTS][MAX_NAME_LEN]) {
     }
     printf("\n");
     return subjectCount;
+}
+
+void inputStudents(Student list[MAX_STUDENTS], const int studentCount, const char subjects[MAX_SUBJECTS][MAX_NAME_LEN], const int subjectCount) {
+    for (int studentIdx = 0; studentIdx < studentCount; studentIdx++) {
+        Student * const s = &list[studentIdx];
+        
+        printf("[%d번째 학생]\n", studentIdx + 1);
+        printf("이름: ");
+        scanf(SCANF_NAME_FMT, s->name);
+        clearInputBuffer();
+        
+        int sum = 0;
+        for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+            printf("%s 점수 입력: ", subjects[subjectIdx]);
+            s->scores[subjectIdx] = getSafeInt(MIN_SCORE, MAX_SCORE);
+            s->grades[subjectIdx] = calculateGrade((double)s->scores[subjectIdx]);
+            sum += s->scores[subjectIdx];
+        }
+        s->average = (double)sum / (double)subjectCount;
+        s->averageGrade = calculateGrade(s->average);
+        printf("\n");
+    }
 }
