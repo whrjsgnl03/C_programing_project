@@ -79,13 +79,18 @@ void inputStudents(Student list[MAX_STUDENTS], const int studentCount, const cha
  */
 void printResults(const Student list[MAX_STUDENTS], const int studentCount, const char subjects[MAX_SUBJECTS][MAX_NAME_LEN], const int subjectCount);
 
+/**
+ * @brief Reads the number of students from standard input.
+ * 
+ * @return int The validated student count.
+ */
+int inputStudentCount(void);
+
 int main(void) {
     char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
     const int subjectCount = inputSubjects(subjects);
     
-    printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
-    const int studentCount = getSafeInt(1, MAX_STUDENTS);
-    printf("\n");
+    const int studentCount = inputStudentCount();
 
     Student list[MAX_STUDENTS] = {0};
 
@@ -189,4 +194,11 @@ void printResults(const Student list[MAX_STUDENTS], const int studentCount, cons
         }
         printf(FMT_ROW_AVG, s->average, s->averageGrade);
     }
+}
+
+int inputStudentCount(void) {
+    printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
+    const int count = getSafeInt(1, MAX_STUDENTS);
+    printf("\n");
+    return count;
 }
