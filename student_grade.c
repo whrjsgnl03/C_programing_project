@@ -51,18 +51,17 @@ void clearInputBuffer(void);
  */
 int getSafeInt(const int min, const int max);
 
+/**
+ * @brief Reads the number of subjects and their names from standard input.
+ * 
+ * @param subjects Array to store the subject names.
+ * @return int The number of subjects successfully read.
+ */
+int inputSubjects(char subjects[MAX_SUBJECTS][MAX_NAME_LEN]);
+
 int main(void) {
     char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
-
-    printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
-    const int subjectCount = getSafeInt(1, MAX_SUBJECTS);
-
-    for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
-        printf("%d번째 과목명 입력: ", subjectIdx + 1);
-        scanf(SCANF_NAME_FMT, subjects[subjectIdx]);
-        clearInputBuffer();
-    }
-    printf("\n");
+    const int subjectCount = inputSubjects(subjects);
     
     printf("학생 수 입력 (최대 %d): ", MAX_STUDENTS);
     const int studentCount = getSafeInt(1, MAX_STUDENTS);
@@ -149,4 +148,17 @@ int getSafeInt(const int min, const int max) {
             clearInputBuffer();
         }
     }
+}
+
+int inputSubjects(char subjects[MAX_SUBJECTS][MAX_NAME_LEN]) {
+    printf("과목 수 입력 (최대 %d): ", MAX_SUBJECTS);
+    const int subjectCount = getSafeInt(1, MAX_SUBJECTS);
+
+    for (int subjectIdx = 0; subjectIdx < subjectCount; subjectIdx++) {
+        printf("%d번째 과목명 입력: ", subjectIdx + 1);
+        scanf(SCANF_NAME_FMT, subjects[subjectIdx]);
+        clearInputBuffer();
+    }
+    printf("\n");
+    return subjectCount;
 }
