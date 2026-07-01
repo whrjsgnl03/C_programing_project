@@ -86,7 +86,13 @@ void printResults(const Student list[MAX_STUDENTS], const int studentCount, cons
  */
 int inputStudentCount(void);
 
+/**
+ * @brief Prints a welcome banner at the start of the program.
+ */
+void printWelcomeBanner(void);
+
 int main(void) {
+    printWelcomeBanner();
     char subjects[MAX_SUBJECTS][MAX_NAME_LEN];
     const int subjectCount = inputSubjects(subjects);
     
@@ -201,4 +207,10 @@ int inputStudentCount(void) {
     const int count = getSafeInt(1, MAX_STUDENTS);
     printf("\n");
     return count;
+}
+
+void printWelcomeBanner(void) {
+    printf("=========================================\n");
+    printf("       학생 성적 관리 프로그램 (v1.0)     \n");
+    printf("=========================================\n\n");
 }
